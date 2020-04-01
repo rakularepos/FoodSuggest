@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8aa7b4b2-736b-4a56-acc9-55cf70d913e0" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZlU6vHshXCsjBpJnMrwOoB1jFZ" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="flattenPackages" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.App" />
+      <module name="FoodSuggest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8aa7b4b2-736b-4a56-acc9-55cf70d913e0" name="Default Changelist" comment="" />
+      <created>1585413002888</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585413002888</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="683" y="227" key="#com.intellij.ide.util.MemberChooser" timestamp="1585553812535">
+      <screen x="62" y="23" width="1618" height="1027" />
+    </state>
+    <state x="683" y="227" key="#com.intellij.ide.util.MemberChooser/62.23.1618.1027@62.23.1618.1027" timestamp="1585553812535" />
+    <state x="685" y="227" key="#com.intellij.ide.util.MemberChooser/65.23.1615.1027@65.23.1615.1027" timestamp="1585463863820" />
+    <state x="1492" y="485" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585442710372">
+      <screen x="0" y="23" width="3440" height="1417" />
+    </state>
+    <state x="1492" y="485" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.3440.1417@0.23.3440.1417" timestamp="1585442710372" />
+    <state width="1573" height="501" key="GridCell.Tab.0.bottom" timestamp="1585554764124">
+      <screen x="62" y="23" width="1618" height="1027" />
+    </state>
+    <state width="3330" height="553" key="GridCell.Tab.0.bottom/0.23.3440.1417@0.23.3440.1417" timestamp="1585442699608" />
+    <state width="1573" height="501" key="GridCell.Tab.0.bottom/62.23.1618.1027@62.23.1618.1027" timestamp="1585554764124" />
+    <state width="1573" height="501" key="GridCell.Tab.0.bottom/65.23.1615.1027@65.23.1615.1027" timestamp="1585467694193" />
+    <state width="1329" height="673" key="GridCell.Tab.0.bottom/68.23.3372.1417@68.23.3372.1417" timestamp="1585419245687" />
+    <state width="1573" height="501" key="GridCell.Tab.0.center" timestamp="1585554764123">
+      <screen x="62" y="23" width="1618" height="1027" />
+    </state>
+    <state width="3330" height="553" key="GridCell.Tab.0.center/0.23.3440.1417@0.23.3440.1417" timestamp="1585442699607" />
+    <state width="1573" height="501" key="GridCell.Tab.0.center/62.23.1618.1027@62.23.1618.1027" timestamp="1585554764123" />
+    <state width="1573" height="501" key="GridCell.Tab.0.center/65.23.1615.1027@65.23.1615.1027" timestamp="1585467694192" />
+    <state width="1329" height="673" key="GridCell.Tab.0.center/68.23.3372.1417@68.23.3372.1417" timestamp="1585419245687" />
+    <state width="1573" height="501" key="GridCell.Tab.0.left" timestamp="1585554764122">
+      <screen x="62" y="23" width="1618" height="1027" />
+    </state>
+    <state width="3330" height="553" key="GridCell.Tab.0.left/0.23.3440.1417@0.23.3440.1417" timestamp="1585442699607" />
+    <state width="1573" height="501" key="GridCell.Tab.0.left/62.23.1618.1027@62.23.1618.1027" timestamp="1585554764122" />
+    <state width="1573" height="501" key="GridCell.Tab.0.left/65.23.1615.1027@65.23.1615.1027" timestamp="1585467694192" />
+    <state width="1329" height="673" key="GridCell.Tab.0.left/68.23.3372.1417@68.23.3372.1417" timestamp="1585419245686" />
+    <state width="1573" height="501" key="GridCell.Tab.0.right" timestamp="1585554764124">
+      <screen x="62" y="23" width="1618" height="1027" />
+    </state>
+    <state width="3330" height="553" key="GridCell.Tab.0.right/0.23.3440.1417@0.23.3440.1417" timestamp="1585442699607" />
+    <state width="1573" height="501" key="GridCell.Tab.0.right/62.23.1618.1027@62.23.1618.1027" timestamp="1585554764124" />
+    <state width="1573" height="501" key="GridCell.Tab.0.right/65.23.1615.1027@65.23.1615.1027" timestamp="1585467694193" />
+    <state width="1329" height="673" key="GridCell.Tab.0.right/68.23.3372.1417@68.23.3372.1417" timestamp="1585419245687" />
+    <state width="1313" height="715" key="GridCell.Tab.1.bottom" timestamp="1585439173801">
+      <screen x="0" y="23" width="3440" height="1417" />
+    </state>
+    <state width="1313" height="715" key="GridCell.Tab.1.bottom/0.23.3440.1417@0.23.3440.1417" timestamp="1585439173801" />
+    <state width="744" height="906" key="GridCell.Tab.1.bottom/65.23.1615.1027@65.23.1615.1027" timestamp="1585436727647" />
+    <state width="1329" height="673" key="GridCell.Tab.1.bottom/68.23.3372.1417@68.23.3372.1417" timestamp="1585419245688" />
+    <state width="1313" height="715" key="GridCell.Tab.1.center" timestamp="1585439173800">
+      <screen x="0" y="23" width="3440" height="1417" />
+    </state>
+    <state width="1313" height="715" key="GridCell.Tab.1.center/0.23.3440.1417@0.23.3440.1417" timestamp="1585439173800" />
+    <state width="744" height="906" key="GridCell.Tab.1.center/65.23.1615.1027@65.23.1615.1027" timestamp="1585436727646" />
+    <state width="1329" height="673" key="GridCell.Tab.1.center/68.23.3372.1417@68.23.3372.1417" timestamp="1585419245688" />
+    <state width="1313" height="715" key="GridCell.Tab.1.left" timestamp="1585439173800">
+      <screen x="0" y="23" width="3440" height="1417" />
+    </state>
+    <state width="1313" height="715" key="GridCell.Tab.1.left/0.23.3440.1417@0.23.3440.1417" timestamp="1585439173800" />
+    <state width="744" height="906" key="GridCell.Tab.1.left/65.23.1615.1027@65.23.1615.1027" timestamp="1585436727646" />
+    <state width="1329" height="673" key="GridCell.Tab.1.left/68.23.3372.1417@68.23.3372.1417" timestamp="1585419245687" />
+    <state width="1313" height="715" key="GridCell.Tab.1.right" timestamp="1585439173801">
+      <screen x="0" y="23" width="3440" height="1417" />
+    </state>
+    <state width="1313" height="715" key="GridCell.Tab.1.right/0.23.3440.1417@0.23.3440.1417" timestamp="1585439173801" />
+    <state width="744" height="906" key="GridCell.Tab.1.right/65.23.1615.1027@65.23.1615.1027" timestamp="1585436727647" />
+    <state width="1329" height="673" key="GridCell.Tab.1.right/68.23.3372.1417@68.23.3372.1417" timestamp="1585419245688" />
+    <state x="743" y="347" width="525" height="380" key="StructurePopup" timestamp="1585465882704">
+      <screen x="65" y="23" width="1615" height="1027" />
+    </state>
+    <state x="1444" y="470" width="1119" height="525" key="StructurePopup/0.23.3440.1417@0.23.3440.1417" timestamp="1585442107266" />
+    <state x="743" y="347" width="525" height="380" key="StructurePopup/65.23.1615.1027@65.23.1615.1027" timestamp="1585465882704" />
+    <state x="1484" y="470" width="540" height="524" key="StructurePopup/68.23.3372.1417@68.23.3372.1417" timestamp="1585418302769" />
+    <state x="535" y="250" width="672" height="676" key="search.everywhere.popup" timestamp="1585552718574">
+      <screen x="62" y="23" width="1618" height="1027" />
+    </state>
+    <state x="535" y="250" width="672" height="676" key="search.everywhere.popup/62.23.1618.1027@62.23.1618.1027" timestamp="1585552718574" />
+    <state x="537" y="250" width="670" height="676" key="search.everywhere.popup/65.23.1615.1027@65.23.1615.1027" timestamp="1585465553611" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/FatSecretClient.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/App.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

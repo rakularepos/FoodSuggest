@@ -1,0 +1,18 @@
+// Search Foods
+Response<CompactFood> searchResult = fssClient.searchFoods("toast");
+printCompactFoodName(searchResult.getResults());
+
+private static void printCompactFoodName(List<CompactFood> compactFoods) {
+    for(CompactFood compactFood:compactFoods)
+         System.out.println(compactFood.getName());
+ }
+ ------------------------------------------------------------------------------------------------------------------------
+
+Profile auth
+{"profile":{"auth_secret":"61ecc8f641274dc0b6227f8d6a0ebd71","auth_token":"417679c219654613a4b1d8ce0c24905e"}}
+------------------------------------------------------------------------------------------------------------------------
+Food diary entry
+Sending CREATE_FOOD_DIARY_ENTRY request to https://platform.fatsecret.com/rest/server.api?food_entry_name=Plain%20French%20Toast&food_id=4384&format=json&meal=breakfast&method=food_entry.create&number_of_units=1.0&oauth_consumer_key=6830f031117f47f6bc9cdccbad1c4f94&oauth_nonce=117122116108&oauth_signature=Za4PeMpneHoyrD4Y9gJ8RVnNZMU%3D&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1585464879&oauth_token=417679c219654613a4b1d8ce0c24905e&oauth_version=1.0&serving_id=16758
+{"food_entry_id":{"value":"6790542582"}}
+------------------------------------------------------------------------------------------------------------------------
+
