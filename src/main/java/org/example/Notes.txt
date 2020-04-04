@@ -16,3 +16,22 @@ Sending CREATE_FOOD_DIARY_ENTRY request to https://platform.fatsecret.com/rest/s
 {"food_entry_id":{"value":"6790542582"}}
 ------------------------------------------------------------------------------------------------------------------------
 
+<input type="button" value="click" onclick="msg()"/>
+------------------------------------------------------------------------------------------------------------------------
+
+public void handle(String target,
+                       Request baseRequest,
+                       HttpServletRequest request,
+                       HttpServletResponse response)
+            throws IOException, ServletException
+    {
+        response.setContentType("text/html;charset=utf-8");
+        response.setStatus(HttpServletResponse.SC_OK);
+        baseRequest.setHandled(true);
+        MustacheFactory mf = new DefaultMustacheFactory();
+        Mustache m = mf.compile("templates/intro.mustache");
+        StringWriter writer = new StringWriter();
+        m.execute(writer, new Intro("Welcome to Food Suggest!!!")).flush();
+        String html = writer.toString();
+        response.getWriter().println(html);
+    }

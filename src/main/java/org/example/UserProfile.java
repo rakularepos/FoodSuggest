@@ -3,7 +3,6 @@ package org.example;
 import org.json.JSONObject;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 public class UserProfile {
     private String profileUserName;
@@ -12,17 +11,17 @@ public class UserProfile {
     private String weightUnit;
     private double currentHeight;
     private String heightUnit;
-    private String profileAuthSecret;
-    private String profileAuthToken;
-    private TargetGoal targetGoal;
-    private DailyTarget dailyTarget;
+    private transient String profileAuthSecret;
+    private transient String profileAuthToken;
+    private transient TargetGoal targetGoal;
+    private transient DailyTarget dailyTarget;
 
-    private String DEFAULT_PROFILE_USERNAME = "John Doe";
-    private double DEFAULT_CURRENT_WEIGHT = 0.0;
-    private double DEFAULT_GOAL_WEIGHT = 0.0;
-    private String DEFAULT_WEIGHT_UNIT = "Kg";
-    private double DEFAULT_CURRENT_HEIGHT = 0.0;
-    private String DEFAULT_HEIGHT_UNIT = "Cm";
+    private transient String DEFAULT_PROFILE_USERNAME = "John Doe";
+    private transient double DEFAULT_CURRENT_WEIGHT = 0.0;
+    private transient double DEFAULT_GOAL_WEIGHT = 0.0;
+    private transient String DEFAULT_WEIGHT_UNIT = "Kg";
+    private transient double DEFAULT_CURRENT_HEIGHT = 0.0;
+    private transient String DEFAULT_HEIGHT_UNIT = "Cm";
 
     public UserProfile(String profile_auth_token, String profile_auth_secret) {
         new UserProfile(profile_auth_token, profile_auth_secret, DEFAULT_PROFILE_USERNAME,
