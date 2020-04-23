@@ -35,3 +35,17 @@ public void handle(String target,
         String html = writer.toString();
         response.getWriter().println(html);
     }
+------------------------------------------------------------------------------------------------------------------------
+To start the mongoDB
+mongod --config /usr/local/etc/mongod.conf --fork
+Check if it is running
+ps aux | grep -v grep | grep mongod
+console: mongo
+622977cd-882d-4c78-856b-deb464d2764d
+{ "_id" : "622977cd-882d-4c78-856b-deb464d2764d", "className" : "org.example.beans.UserProfile", "profileUserName" : "ravitejakula", "currentWeight" : 230, "goalWeight" : 200, "weightUnit" : "Kg", "currentHeight" : 186, "heightUnit" : "Cm", "targetGoal" : "LOSE_WEIGHT", "dailyTarget" : { "calories" : 2000, "carbs" : 100, "fats" : 100, "protein" : 100 }, "profileAuthSecret" : "4960def239424107ac6b9c82e8bc92b9", "profileAuthToken" : "7b4c0dda850f444d99bbc18570d217a4" }
+
+use userDB
+show collections
+db.diaryentries.find()
+db.diaryentries.drop()
+------------------------------------------------------------------------------------------------------------------------

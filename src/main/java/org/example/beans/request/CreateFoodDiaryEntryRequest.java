@@ -1,24 +1,24 @@
-package org.example;
+package org.example.beans.request;
 
-import java.time.LocalDate;
-
-public class FoodDiaryEntry {
+public class CreateFoodDiaryEntryRequest {
     private long foodId;
     private String foodEntryName;
     private long servingId;
     private double numberOfUnits;
     private String mealType;
-    private LocalDate date;
+    private String date;
+    private String profileId;
 
-    public FoodDiaryEntry(long foodId, String foodEntryName,
-                          long servingId, double numberOfUnits,
-                          String mealType, LocalDate date) {
+    public CreateFoodDiaryEntryRequest(String profileId, long foodId, String foodEntryName,
+                                       long servingId, double numberOfUnits,
+                                       String mealType, String date) throws Exception {
+        this.profileId = profileId;
         this.foodId = foodId;
         this.foodEntryName = foodEntryName;
         this.servingId = servingId;
         this.numberOfUnits = numberOfUnits;
         this.mealType = mealType;
-        this.date = date;
+        this.date = date;;
     }
 
     public long getFoodId() {
@@ -61,23 +61,34 @@ public class FoodDiaryEntry {
         this.mealType = mealType;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(String profileId) {
+        this.profileId = profileId;
     }
 
     @Override
     public String toString() {
-        return "FoodDiaryEntry{" +
+        return "CreateFoodDiaryEntryRequest{" +
                 "foodId=" + foodId +
                 ", foodEntryName='" + foodEntryName + '\'' +
                 ", servingId=" + servingId +
                 ", numberOfUnits=" + numberOfUnits +
                 ", mealType='" + mealType + '\'' +
-                ", date=" + date.toString() +
+                ", date=" + date +
+                ", profileId='" + profileId + '\'' +
                 '}';
     }
+
+
 }

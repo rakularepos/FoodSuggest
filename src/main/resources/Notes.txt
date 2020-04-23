@@ -1,0 +1,51 @@
+// Search Foods
+Response<CompactFood> searchResult = fssClient.searchFoods("toast");
+printCompactFoodName(searchResult.getResults());
+
+private static void printCompactFoodName(List<CompactFood> compactFoods) {
+    for(CompactFood compactFood:compactFoods)
+         System.out.println(compactFood.getName());
+ }
+ ------------------------------------------------------------------------------------------------------------------------
+
+Profile auth
+{"profile":{"auth_secret":"61ecc8f641274dc0b6227f8d6a0ebd71","auth_token":"417679c219654613a4b1d8ce0c24905e"}}
+------------------------------------------------------------------------------------------------------------------------
+Food diary entry
+Sending CREATE_FOOD_DIARY_ENTRY request to https://platform.fatsecret.com/rest/server.api?food_entry_name=Plain%20French%20Toast&food_id=4384&format=json&meal=breakfast&method=food_entry.create&number_of_units=1.0&oauth_consumer_key=6830f031117f47f6bc9cdccbad1c4f94&oauth_nonce=117122116108&oauth_signature=Za4PeMpneHoyrD4Y9gJ8RVnNZMU%3D&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1585464879&oauth_token=417679c219654613a4b1d8ce0c24905e&oauth_version=1.0&serving_id=16758
+{"food_entry_id":{"value":"6790542582"}}
+------------------------------------------------------------------------------------------------------------------------
+
+<input type="button" value="click" onclick="msg()"/>
+------------------------------------------------------------------------------------------------------------------------
+
+public void handle(String target,
+                       Request baseRequest,
+                       HttpServletRequest request,
+                       HttpServletResponse response)
+            throws IOException, ServletException
+    {
+        response.setContentType("text/html;charset=utf-8");
+        response.setStatus(HttpServletResponse.SC_OK);
+        baseRequest.setHandled(true);
+        MustacheFactory mf = new DefaultMustacheFactory();
+        Mustache m = mf.compile("templates/intro.mustache");
+        StringWriter writer = new StringWriter();
+        m.execute(writer, new Intro("Welcome to Food Suggest!!!")).flush();
+        String html = writer.toString();
+        response.getWriter().println(html);
+    }
+------------------------------------------------------------------------------------------------------------------------
+To start the mongoDB
+mongod --config /usr/local/etc/mongod.conf --fork
+Check if it is running
+ps aux | grep -v grep | grep mongod
+console: mongo
+622977cd-882d-4c78-856b-deb464d2764d
+{ "_id" : "622977cd-882d-4c78-856b-deb464d2764d", "className" : "org.example.beans.UserProfile", "profileUserName" : "ravitejakula", "currentWeight" : 230, "goalWeight" : 200, "weightUnit" : "Kg", "currentHeight" : 186, "heightUnit" : "Cm", "targetGoal" : "LOSE_WEIGHT", "dailyTarget" : { "calories" : 2000, "carbs" : 100, "fats" : 100, "protein" : 100 }, "profileAuthSecret" : "4960def239424107ac6b9c82e8bc92b9", "profileAuthToken" : "7b4c0dda850f444d99bbc18570d217a4" }
+
+use userDB
+show collections
+db.diaryentries.find()
+db.diaryentries.drop()
+------------------------------------------------------------------------------------------------------------------------

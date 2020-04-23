@@ -1,37 +1,43 @@
-package org.example;
+package org.example.beans;
 
+import dev.morphia.annotations.Embedded;
+import dev.morphia.annotations.Entity;
+import dev.morphia.annotations.Field;
+import dev.morphia.annotations.Id;
+import dev.morphia.annotations.Index;
+import dev.morphia.annotations.Indexes;
+import org.example.fatsecret.FatSecretClient;
 import org.json.JSONObject;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
+@Entity("profiles")
+@Indexes(
+        @Index(value = "profileId", fields = @Field("profileId"))
+)
 public class UserProfile {
+    @Id
+    private String profileId;
     private String profileUserName;
     private double currentWeight;
     private double goalWeight;
     private String weightUnit;
     private double currentHeight;
     private String heightUnit;
-    private transient String profileAuthSecret;
-    private transient String profileAuthToken;
-    private transient TargetGoal targetGoal;
-    private transient DailyTarget dailyTarget;
+    private TargetGoal targetGoal;
+    @Embedded
+    private DailyTarget dailyTarget;
 
-    private transient String DEFAULT_PROFILE_USERNAME = "John Doe";
-    private transient double DEFAULT_CURRENT_WEIGHT = 0.0;
-    private transient double DEFAULT_GOAL_WEIGHT = 0.0;
-    private transient String DEFAULT_WEIGHT_UNIT = "Kg";
-    private transient double DEFAULT_CURRENT_HEIGHT = 0.0;
-    private transient String DEFAULT_HEIGHT_UNIT = "Cm";
+    private String profileAuthSecret;
+    private String profileAuthToken;
 
-    public UserProfile(String profile_auth_token, String profile_auth_secret) {
-        new UserProfile(profile_auth_token, profile_auth_secret, DEFAULT_PROFILE_USERNAME,
-                        DEFAULT_CURRENT_WEIGHT, DEFAULT_GOAL_WEIGHT, DEFAULT_WEIGHT_UNIT,
-                        DEFAULT_CURRENT_HEIGHT, DEFAULT_HEIGHT_UNIT, TargetGoal.NONE);
+    public UserProfile() {
     }
 
     public UserProfile(String profileAuthToken, String profileAuthSecret, String profileUserName,
                        double currentWeight, double goalWeight, String weightUnit,
-                       double currentHeight, String heightUnit, TargetGoal targetGoal) {
+                       double currentHeight, String heightUnit) {
         this.profileAuthToken = profileAuthToken;
         this.profileAuthSecret = profileAuthSecret;
         this.profileUserName = profileUserName;
@@ -40,9 +46,19 @@ public class UserProfile {
         this.weightUnit = weightUnit;
         this.currentHeight = currentHeight;
         this.heightUnit = heightUnit;
-        this.targetGoal = targetGoal;
-        this.dailyTarget = currentWeight==DEFAULT_CURRENT_WEIGHT?
+        this.targetGoal = calculateTargetGoal(currentWeight, goalWeight);
+        this.dailyTarget = currentWeight==0?
                 new DailyTarget() : calculateDailyTarget();
+        this.profileId = UUID.randomUUID().toString();
+    }
+
+    private TargetGoal calculateTargetGoal(double currentWeight, double goalWeight) {
+        if (currentWeight > goalWeight)
+            return TargetGoal.LOSE_WEIGHT;
+        else if (currentWeight < goalWeight)
+            return TargetGoal.GAIN_WEIGHT;
+        else
+            return TargetGoal.MAINTAIN_WEIGHT;
     }
 
     private DailyTarget calculateDailyTarget() {
@@ -123,19 +139,44 @@ public class UserProfile {
         this.targetGoal = targetGoal;
     }
 
+    public void setProfileAuthSecret(String profileAuthSecret) {
+        this.profileAuthSecret = profileAuthSecret;
+    }
+
+    public void setProfileAuthToken(String profileAuthToken) {
+        this.profileAuthToken = profileAuthToken;
+    }
+
+    public DailyTarget getDailyTarget() {
+        return dailyTarget;
+    }
+
+    public void setDailyTarget(DailyTarget dailyTarget) {
+        this.dailyTarget = dailyTarget;
+    }
+
+    public String getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(String profileId) {
+        this.profileId = profileId;
+    }
+
     @Override
     public String toString() {
         return "UserProfile{" +
-                "profileUserName='" + profileUserName + '\'' +
+                "profileId=" + profileId +
+                ", profileUserName='" + profileUserName + '\'' +
                 ", currentWeight=" + currentWeight +
                 ", goalWeight=" + goalWeight +
                 ", weightUnit='" + weightUnit + '\'' +
                 ", currentHeight=" + currentHeight +
                 ", heightUnit='" + heightUnit + '\'' +
-                ", profileAuthSecret='" + profileAuthSecret + '\'' +
-                ", profileAuthToken='" + profileAuthToken + '\'' +
                 ", targetGoal=" + targetGoal +
                 ", dailyTarget=" + dailyTarget +
+                ", profileAuthSecret='" + profileAuthSecret + '\'' +
+                ", profileAuthToken='" + profileAuthToken + '\'' +
                 '}';
     }
 }

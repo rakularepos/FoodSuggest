@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Food Suggest!</title>
+  </head>
+  <body>
+  <div class="container">
+    <div class="py-5 text-center">
+      <h1>Welcome to FoodSuggest!</h1>
+      <p class="lead">Select an option below.</p>
+    </div>
+
+          <div class="row">
+            <div class="col-md-12 mb-3">
+              <button class="btn btn-primary btn-lg btn-block" type="button" onclick="createProfile()">Create Profile</button>
+            </div>
+            <div class="col-md-12 mb-3">
+                <form id="getProfileForm" class="needs-validation" novalidate>
+                    <label for="getProfile">Enter profile Id</label>
+                    <input type="text" class="form-control" id="getProfile" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            Valid profileId is required.
+                        </div>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit" onclick="getProfileFunc()">Get Profile</button>
+                </form>
+            </div>
+          </div>
+
+  </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function getProfileFunc(){
+            console.log("Inside the get profile func");
+            const form = document.getElementById("getProfileForm")
+
+            form.addEventListener("submit", function(event) {
+              event.preventDefault();
+              const data = new FormData(form);
+
+              // get the data
+              const entries = [...data.entries()];
+              console.log(entries);
+
+              const values = [...data.values()];
+              console.log(values);
+
+              var xhr = new XMLHttpRequest();
+              xhr.open("GET", "http://localhost:8080/fs/profiles/getProfile/id/1");
+              xhr.onreadystatechange = processRequest;
+
+              function processRequest(e) {
+                  if (xhr.readyState == 4 && xhr.status == 200) {
+                      var response = JSON.parse(xhr.responseText);
+                      console.log(response);
+                      //document.getElementById("intro").innerHTML = response;
+                  }
+              }
+              xhr.send(data);
+            });
+        }
+        function createProfile(){
+            console.log("Creating a new profile");
+            window.location.href="/fs/profiles/createProfilePage"
+        }
+
+
+    </script>
+  </body>
+</html>

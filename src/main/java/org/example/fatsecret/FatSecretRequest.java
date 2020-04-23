@@ -1,4 +1,4 @@
-package org.example;
+package org.example.fatsecret;
 
 import com.fatsecret.platform.services.Request;
 import com.fatsecret.platform.services.RequestBuilder;

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FoodSuggest</title>
+</head>
+<body>
+    <h2 align="center" id="intro">Create a profile with the following information!</h2>
+
+    <form id="createProfileForm">
+      Username: <input type="text" name="username" id="username" value="johndoe"><br>
+      <label for="weightunit">Choose Weight Unit</label>
+      <select id="weightunit" name="weightunit" form="createProfileForm">
+        <option name="Kg" value="Kg">Kg</option>
+        <option name="lb" value="lb">lb</option>
+      </select>
+      Current Weight: <input type="text" name="currentweight" value="0"><br>
+      Goal Weight: <input type="text" name="goalweight" value="0"><br>
+
+      <label for="heightunit">Choose Height Unit</label>
+      <select id="heightunit" name="heightunit" form="createProfileForm">
+        <option name="Cm" value="Cm">Cm</option>
+        <option name="feet" value="feet">feet</option>
+      </select>
+      Current Height: <input type="text" name="currentheight" value="0">
+
+      <button type="submit" onClick="return createProfile()">Submit</button>
+    </form>
+    <p id="profileResult"></p>
+    <p id="demo"></p>
+
+    <script type="text/javascript">
+            function createProfile(){
+                console.log("Creating a profile");
+
+                // form.js
+                const form = document.getElementById("createProfileForm")
+
+                form.addEventListener("submit", function(event) {
+                  event.preventDefault();
+
+                  const data = new FormData(form);
+
+                  // get the data
+                  const entries = [...data.entries()];
+                  console.log(entries);
+
+                  const values = [...data.values()];
+                  console.log(values);
+
+                  var xhr = new XMLHttpRequest();
+                  xhr.open("POST", "http://localhost:8080/fs/profiles/createprofile");
+                  xhr.onreadystatechange = processRequest;
+
+                  function processRequest(e) {
+                      if (xhr.readyState == 4 && xhr.status == 200) {
+                          var response = JSON.parse(xhr.responseText);
+                          console.log(response);
+                          document.getElementById("intro").innerHTML = response.profileUserName;
+                      }
+                  }
+                  xhr.send(data);
+                });
+
+                /*form.addEventListener("formdata", event => {
+                    const data = event.formData;
+
+                    // get the data
+                    const entries = [...data.entries()];
+                    console.log(entries);
+
+                    const values = [...data.values()];
+                    console.log(values);
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "http://localhost:8080/fs/profiles/createprofile");
+                    xhr.onreadystatechange = processRequest;
+
+                    function processRequest(e) {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            var response = JSON.parse(xhr.responseText);
+                            console.log(response);
+                            document.getElementById("intro").innerHTML = response.profileUserName;
+                        }
+                    }
+                    xhr.send(data);
+                });*/
+                return true;
+            }
+        </script>
+</body>
+</html>

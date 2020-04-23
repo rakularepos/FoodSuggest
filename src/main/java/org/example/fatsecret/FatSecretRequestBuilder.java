@@ -1,8 +1,10 @@
-package org.example;
+package org.example.fatsecret;
 
-import com.fatsecret.platform.model.Food;
 import com.fatsecret.platform.services.Base64;
 import com.fatsecret.platform.services.RequestBuilder;
+import org.example.app.FSUtils;
+import org.example.beans.UserProfile;
+import org.example.beans.request.CreateFoodDiaryEntryRequest;
 
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
@@ -61,18 +63,18 @@ public class FatSecretRequestBuilder extends RequestBuilder {
     }
 
     public String createFoodDiaryEntryUrl(UserProfile profile,
-                                          FoodDiaryEntry foodDiaryEntry) throws Exception {
+                                          CreateFoodDiaryEntryRequest foodDiaryEntryRequest) throws Exception {
         List<String> params = new ArrayList(Arrays.asList(this.generateOauthParams()));
         String[] template = new String[1];
         params.add("method=food_entry.create");
         params.add("oauth_token="+profile.getProfileAuthToken());
 
-        params.add("food_id="+foodDiaryEntry.getFoodId());
-        params.add("food_entry_name="+this.encode(foodDiaryEntry.getFoodEntryName()));
-        params.add("serving_id="+foodDiaryEntry.getServingId());
-        params.add("number_of_units="+foodDiaryEntry.getNumberOfUnits());
-        params.add("meal="+this.encode(foodDiaryEntry.getMealType()));
-        params.add("date="+foodDiaryEntry.getDate().toEpochDay());
+        params.add("food_id="+foodDiaryEntryRequest.getFoodId());
+        params.add("food_entry_name="+this.encode(foodDiaryEntryRequest.getFoodEntryName()));
+        params.add("serving_id="+foodDiaryEntryRequest.getServingId());
+        params.add("number_of_units="+foodDiaryEntryRequest.getNumberOfUnits());
+        params.add("meal="+this.encode(foodDiaryEntryRequest.getMealType()));
+        params.add("date="+ FSUtils.getLocalDateFromDateString(foodDiaryEntryRequest.getDate()).toEpochDay());
 
         params.add("oauth_signature=" + this.signDelegated("GET", "https://platform.fatsecret.com/rest/server.api",
                 (String[])params.toArray(template), profile.getProfileAuthSecret()));
@@ -90,7 +92,7 @@ public class FatSecretRequestBuilder extends RequestBuilder {
         return "https://platform.fatsecret.com/rest/server.api?" + this.paramify((String[])params.toArray(template));
     }
 
-    public String getFoodDiaryEntriesByFoodIdUrl(UserProfile profile, long foodEntryId ) throws Exception {
+    public String getFoodDiaryEntriesByFoodIdUrl(UserProfile profile, String foodEntryId ) throws Exception {
         List<String> params = new ArrayList(Arrays.asList(this.generateOauthParams()));
         String[] template = new String[1];
         params.add("method=food_entries.get");
