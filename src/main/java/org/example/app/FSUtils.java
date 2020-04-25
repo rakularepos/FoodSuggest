@@ -11,4 +11,11 @@ public class FSUtils {
                 Integer.valueOf(date.substring(6, 8)));
         return localDate;
     }
+
+    public static long getDaysSinceEpochAsString(String date) {
+        LocalDate localDate = LocalDate.of( Integer.valueOf(date.substring(0, 4)),
+                Integer.valueOf(date.substring(4, 6)),
+                Integer.valueOf(date.substring(6, 8)));
+        return localDate.toEpochDay();
+    }
 }

@@ -70,7 +70,8 @@ public class SearchFoods {
     private GetFoodDiaryEntryResponse getDiaryEntryResponse(String foodEntryId, String profileId) throws Exception {
         UserProfile profile = DBClient.getInstance().getProfile(profileId);
         JSONObject response = FatSecretClient.getInstance().getFoodDiaryEntriesByFoodEntryId(profile,foodEntryId);
-        return new GetFoodDiaryEntryResponse(response, profileId);
+        JSONObject foodEntry = response.getJSONObject("food_entries").getJSONObject("food_entry");
+        return new GetFoodDiaryEntryResponse(foodEntry, profileId);
     }
 
     @Path("/createentry")
