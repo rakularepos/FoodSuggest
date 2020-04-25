@@ -8,6 +8,8 @@ import dev.morphia.query.Query;
 import org.example.beans.FoodDiaryEntry;
 import org.example.beans.UserProfile;
 
+import java.util.List;
+
 public class DBClient {
     private static DBClient INSTANCE = null;
     final Datastore datastore;
@@ -54,6 +56,18 @@ public class DBClient {
         FoodDiaryEntry foodDiaryEntry = query.first();
         if (foodDiaryEntry == null)
             throw new Exception("No diary entry exists with this id "+foodEntryId);
+
+        return foodDiaryEntry;
+    }
+
+    public List<FoodDiaryEntry> getFoodDiaryEntriesByDate(String profileId, long daysSinceEpoch) throws Exception {
+        Query<FoodDiaryEntry> query = datastore.createQuery(FoodDiaryEntry.class);
+        //query.filter("_id", profileId).filter("date", daysSinceEpoch);
+        query.criteria("profileId").equal(profileId);
+        query.criteria("date").equal(daysSinceEpoch);
+        List<FoodDiaryEntry> foodDiaryEntry = query.asList();
+        if (foodDiaryEntry == null)
+            throw new Exception("No diary entry exists with this id "+profileId);
 
         return foodDiaryEntry;
     }

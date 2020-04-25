@@ -21,33 +21,54 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 @Path("diary")
 public class DiaryEntries {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getDiary(
-            @QueryParam("profileId") String profileId,
+            @QueryParam("profileid") String profileId,
             @QueryParam("date") String date) {
-        List<FoodDiaryEntry> diaryEntries;
+        //List<GetFoodDiaryEntryResponse> diaryEntries;
+        Map<String, List<GetFoodDiaryEntryResponse>> diaryEntries;
         try {
             LocalDate localDate = FSUtils.getLocalDateFromDateString(date);
             validateGetDiary(profileId, localDate);
             UserProfile profile = DBClient.getInstance().getProfile(profileId);
+
             JSONObject response = FatSecretClient.getInstance().getFoodDiaryEntriesForDate(profile, localDate);
-            diaryEntries = getDiaryEntriesFromJsonResponse(response);
+            diaryEntries = getDiaryEntriesFromJsonResponse(response, profileId);
+            //diaryEntries = DBClient.getInstance().getFoodDiaryEntriesByDate(profileId, FSUtils.getDaysSinceEpochAsString(date));
+            Gson gson = new Gson();
+            return Response.ok(gson.toJson(diaryEntries)).header("Access-Control-Allow-Origin", "*").build();
         } catch (Exception e) {
             System.out.println(e.getCause());
             return Response.status(Response.Status.BAD_REQUEST).
                     header("Access-Control-Allow-Origin", "*").build();
         }
-        Gson gson = new Gson();
-        return Response.ok(gson.toJson(diaryEntries)).header("Access-Control-Allow-Origin", "*").build();
     }
 
-    private List<FoodDiaryEntry> getDiaryEntriesFromJsonResponse(JSONObject response) {
-        return new ArrayList<>();
+    private Map<String, List<GetFoodDiaryEntryResponse>> getDiaryEntriesFromJsonResponse(JSONObject response, String profileId) {
+        Map<String, List<GetFoodDiaryEntryResponse>> diaryByMealType = new HashMap<>();
+        //List<GetFoodDiaryEntryResponse> results = new ArrayList<>();
+        JSONObject foodEntriesJson = response.getJSONObject("food_entries");
+        Iterator foodEntriesIterator = foodEntriesJson.getJSONArray("food_entry").iterator();
+        Gson gson = new Gson();
+        while(foodEntriesIterator.hasNext()) {
+            GetFoodDiaryEntryResponse entry = new GetFoodDiaryEntryResponse((JSONObject)foodEntriesIterator.next(), profileId);
+            List<GetFoodDiaryEntryResponse> mapVals = diaryByMealType.getOrDefault(entry.getMealType(), new ArrayList<>());
+            mapVals.add(entry);
+            diaryByMealType.put(entry.getMealType(), mapVals);
+            //results.add(entry);
+        }
+        //FoodDiaryEntry entry = new Gson().fromJson(foodEntriesJson.getJSONObject("food_entry").toString(), FoodDiaryEntry.class);
+        //results.add(entry);
+        //return results;
+        return diaryByMealType;
     }
 
     private void validateGetDiary(String profileusername, LocalDate date) throws Exception {
@@ -81,7 +102,8 @@ public class DiaryEntries {
     private GetFoodDiaryEntryResponse getDiaryEntryResponse(String foodEntryId, String profileId) throws Exception {
         UserProfile profile = DBClient.getInstance().getProfile(profileId);
         JSONObject response = FatSecretClient.getInstance().getFoodDiaryEntriesByFoodEntryId(profile,foodEntryId);
-        return new GetFoodDiaryEntryResponse(response, profileId);
+        JSONObject foodEntry = response.getJSONObject("food_entries").getJSONObject("food_entry");
+        return new GetFoodDiaryEntryResponse(foodEntry, profileId);
     }
 
     @Path("/createentry")

@@ -2,10 +2,9 @@ package org.example.beans;
 
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Id;
+import dev.morphia.annotations.Indexed;
 import org.example.app.FSUtils;
 import org.example.beans.request.CreateFoodDiaryEntryRequest;
-
-import java.time.LocalDate;
 
 @Entity("diaryentries")
 public class FoodDiaryEntry {
@@ -16,7 +15,9 @@ public class FoodDiaryEntry {
     private long servingId;
     private double numberOfUnits;
     private String mealType;
-    private LocalDate date;
+    @Indexed
+    private long date;
+    @Indexed
     private String profileId;
     private String foodEntryDesc;
 
@@ -25,7 +26,7 @@ public class FoodDiaryEntry {
 
     public FoodDiaryEntry(String foodEntryId, long foodId, String foodEntryName,
                           long servingId, double numberOfUnits,
-                          String mealType, LocalDate date, String profileId, String foodEntryDesc) {
+                          String mealType, long date, String profileId, String foodEntryDesc) {
         this.foodEntryId = foodEntryId;
         this.foodId = foodId;
         this.foodEntryName = foodEntryName;
@@ -40,7 +41,7 @@ public class FoodDiaryEntry {
     public FoodDiaryEntry(CreateFoodDiaryEntryRequest req, String foodEntryId, String foodEntryDesc) {
         this(foodEntryId, req.getFoodId(), req.getFoodEntryName(), req.getServingId(),
                 req.getNumberOfUnits(), req.getMealType(),
-                FSUtils.getLocalDateFromDateString(req.getDate()),
+                FSUtils.getDaysSinceEpochAsString(req.getDate()),
                 req.getProfileId(), foodEntryDesc);
     }
 
@@ -84,11 +85,11 @@ public class FoodDiaryEntry {
         this.mealType = mealType;
     }
 
-    public LocalDate getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(long date) {
         this.date = date;
     }
 

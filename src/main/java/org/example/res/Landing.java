@@ -16,7 +16,7 @@ public class Landing {
 
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public Response getProfiles() {
+    public Response getHomePage() {
         MustacheFactory mf = new DefaultMustacheFactory();
         Mustache m = mf.compile("templates/Landing.mustache");
         StringWriter writer = new StringWriter();
